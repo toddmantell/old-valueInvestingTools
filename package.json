@@ -1,0 +1,19 @@
+{
+  "name": "valueInvestingTools",
+  "version": "0.1.0",
+  "description": "value investing toolkit",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Todd Mantell",
+  "license": "ISC",
+  "dependencies": {
+    "es6-promise": "^4.2.5",
+    "express": "^4.16.4",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "dotenv": "^6.1.0"
+  }
+}
