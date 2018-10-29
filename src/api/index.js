@@ -1,0 +1,1 @@
+const getFinancials = ticker => 'stub';

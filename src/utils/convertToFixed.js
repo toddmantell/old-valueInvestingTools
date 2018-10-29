@@ -1,0 +1,1 @@
+module.exports = numberToConvert => Number.parseFloat(numberToConvert).toFixed(2);

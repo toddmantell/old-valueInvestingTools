@@ -4,6 +4,7 @@
   "description": "value investing toolkit",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js %$TICKER%",
     "test": "npm test"
   },
   "author": "Todd Mantell",
