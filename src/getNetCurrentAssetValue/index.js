@@ -16,9 +16,17 @@ async function getNetCurrentAssetValue(ticker) {
 	console.log(`${ticker} current price: $${convertToFixed(price)}`);
 
 	//rename this, it's not technically the percent of price, it's a decimal figure
-	const percentOfPrice = price/ncav;
+	const priceAsPercentOfNCAV = price/ncav;
 
-	if (percentOfPrice) console.log(`${ticker} is selling for ${convertFloatToPercent(percentOfPrice)}% of $${ncavWithTwoDecimals}`)
+	if (checkForNegativePricePercentOfNCAV(priceAsPercentOfNCAV)) {
+		console.log(`${ticker} is selling for ${convertFloatToPercent(percentOfPrice)}% 
+			of its Net Current Asset Value of $${ncavWithTwoDecimals}`)
+	}
+}
+
+function checkForNegativePricePercentOfNCAV(priceAsPercentOfNCAV) {
+	if (priceAsPercentOfNCAV && priceAsPercentOfNCAV > 0) return true;
+	return false;
 }
 
 function convertFloatToPercent(float) {

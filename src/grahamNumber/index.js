@@ -12,13 +12,13 @@ async function grahamNumber(ticker) {
 		const {ttmEPS, priceToBook} = await keyStatsResponse.json();
 		const price = await priceResponse.json();
 				
-		const bookValuePerShare = calculateBookPerShare(price, priceToBook);
+		const bookValuePerShare = convertToFixed(calculateBookPerShare(price, priceToBook));
 		const calculatedGrahamNumber = Math.sqrt(22.5 * bookValuePerShare * ttmEPS);
 	
 		console.log(`Ticker: ${ticker}`);
-		console.log(`Price: ${price}`);
-		console.log(`Book Value Per Share: ${bookValuePerShare}`);		
-		console.log(`Graham Number: ${convertToFixed(calculatedGrahamNumber)}`);
+		console.log(`Price: $${price}`);
+		console.log(`Book Value Per Share: $${bookValuePerShare}`);		
+		console.log(`Graham Number: $${convertToFixed(calculatedGrahamNumber)}`);
 	} catch (error) {
 		console.log({error});
 	}
