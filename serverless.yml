@@ -1,4 +1,4 @@
-service: valueInvestingTools # NOTE: update this with your service name
+service: valueInvestingTools
 
 custom:
   secrets: ${file(secrets.json)}
@@ -25,6 +25,10 @@ functions:
           path: /{proxy+}
           method: ANY
           cors: true
+
+package:
+  exclude:
+    - __tests__/**
 
 # plugins:
 #   - serverless-offline
