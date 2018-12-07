@@ -1,9 +1,9 @@
-require('dotenv').load();
+const secrets = require('../secrets.json')
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 async function getCompanyFinancials(tickerSymbol) {
-	const apiURL = process.env.FINANCIALS_API + tickerSymbol + '&appkey=' + process.env.API_KEY;
+	const apiURL = secrets.FINANCIALS_API + tickerSymbol + '&appkey=' + secrets.API_KEY;
 	
 	try {
 		const response = await fetch(apiURL);

@@ -14,11 +14,9 @@ async function grahamNumber(ticker) {
 				
 		const bookValuePerShare = convertToFixed(calculateBookPerShare(price, priceToBook));
 		const calculatedGrahamNumber = Math.sqrt(22.5 * bookValuePerShare * ttmEPS);
+		const convertedGrahamNumber = convertToFixed(calculatedGrahamNumber);
 	
-		console.log(`Ticker: ${ticker}`);
-		console.log(`Price: $${price}`);
-		console.log(`Book Value Per Share: $${bookValuePerShare}`);		
-		console.log(`Graham Number: $${convertToFixed(calculatedGrahamNumber)}`);
+		return {price, bookValuePerShare, convertedGrahamNumber};
 	} catch (error) {
 		console.log({error});
 	}

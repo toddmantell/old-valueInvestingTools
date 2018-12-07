@@ -13,8 +13,7 @@ async function getGrahamFormula(ticker, growthRate = 0) {
 		const grahamFormulaNumber = calculateGrahamFormula({growthRate, ttmEPS, peAssumption: 8.5, growthMultiple: 2});
 		const conservativeGrahamFormulaNumber = calculateGrahamFormula({growthRate, ttmEPS, peAssumption: 7, growthMultiple: 1})
 
-		console.log(`Graham Formula Result: ${grahamFormulaNumber || 'no growth rate provided'}`);
-		console.log(`Conservative Graham Formula Result: ${conservativeGrahamFormulaNumber || 'no growth rate provided'}`);
+		return {grahamFormulaNumber, conservativeGrahamFormulaNumber};
 	} catch (error) {
 		console.log(error);
 	}

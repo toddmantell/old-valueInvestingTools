@@ -6,16 +6,16 @@ const [,,ticker, growthRate] = process.argv;
 
 dashboard(ticker, growthRate);
 
-function dashboard(ticker, growthRate) {
-	console.log('Ticker');
-	console.log('Price');
-	console.log('TTM EPS');
-	console.log('Graham Number');
-	console.log('Graham Formula PE');
-	console.log('Graham Formula Valuation');
-	//ultimately, these functions should just return values and then we output them somewhere else, but that's a future feature
-	grahamNumber(ticker);
+async function dashboard(ticker, growthRate) {
+	console.log('Ticker:', ticker);
+	
+	const {price, bookValuePerShare, convertedGrahamNumber} = await grahamNumber(ticker);
+	console.log(`Price: $${price}`);
+	console.log(`Book Value Per Share: $${bookValuePerShare}`);		
+	console.log(`Graham Number: $${convertedGrahamNumber}`);
 	// grahamFormula(ticker);
-	getNCAV(ticker);
-	grahamFormula(ticker, growthRate);
+	await getNCAV(ticker);
+	const {grahamFormulaNumber, conservativeGrahamFormulaNumber} = await grahamFormula(ticker, growthRate);
+	console.log(`Graham Formula Result: ${grahamFormulaNumber || 'no growth rate provided'}`);
+	console.log(`Conservative Graham Formula Result: ${conservativeGrahamFormulaNumber || 'no growth rate provided'}`);
 }
