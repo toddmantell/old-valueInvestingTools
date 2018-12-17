@@ -13,7 +13,6 @@ async function dashboard(ticker, growthRate) {
 	console.log(`Price: $${price}`);
 	console.log(`Book Value Per Share: $${bookValuePerShare}`);		
 	console.log(`Graham Number: $${convertedGrahamNumber}`);
-	// grahamFormula(ticker);
 	await getNCAV(ticker);
 	const {grahamFormulaNumber, conservativeGrahamFormulaNumber} = await grahamFormula(ticker, growthRate);
 	console.log(`Graham Formula Result: ${grahamFormulaNumber || 'no growth rate provided'}`);
